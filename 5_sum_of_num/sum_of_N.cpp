@@ -67,12 +67,142 @@ void fun_3(int *a,int N,int size){ //对应思路3
 	}
 }
 
+int partition(int *a,int l,int r){
+
+	int x=a[l];
+	while(l<r){
+		while(l<r&&a[r]>x){
+			r--;
+		}
+		a[l] = a[r];
+		while(l<r&&a[l]<=x){
+			l++;
+		}
+		a[r] = a[l];
+	}
+	a[l] =x;
+	return l;
+}
+
+void quick_sort(int *a, int l, int r){
+	if(l<r){
+		int mid = partition(a,l,r);
+		quick_sort(a,l,mid-1);
+		quick_sort(a,mid+1,r);
+	}
+	return ;
+}
+ vector<int> twoSum(vector<int>& nums, int target) {
+	 vector<int> copy=nums;
+	 quick_sort(&nums[0],0,nums.size()-1);
+	 int high=nums[nums.size()-1];
+	 int lo=nums[0];
+	 vector<vector<int>> hash(high-lo+1);
+	 for(int i=0;i<copy.size();i++){
+		 hash[copy[i]-lo].push_back(i);
+	 }
 
 
+
+        vector<int> x;
+        for(int i=0,j=nums.size()-1;i<j;){
+            if(nums[i]+nums[j]==target){
+                //if(nums[i]>n)
+				x.clear();
+				if(nums[i]==nums[j]){
+					x.push_back(hash[nums[i]-lo][0]+1);
+					x.push_back(hash[nums[j]-lo][1]+1);
+				}else{
+					x.push_back(hash[nums[i]-lo][0]+1);
+					x.push_back(hash[nums[j]-lo][0]+1);
+				}
+				if(x[0]>x[1]){
+					int t=x[0];
+					x[0]=x[1];
+					x[1]=t;
+				}
+                return x;
+            }else if(nums[i]+nums[j]>target){  
+                j--;  //和的值超了 需要降低该值
+            }else{
+                i++;
+            }
+        }
+    }
+
+
+void fun(vector< vector<int> >& xx, vector<int>& nums,int i,int target,vector<int>&index) {
+	if(i>=nums.size()){
+		return;
+	}
+	index.push_back(nums[i]);
+	target-=nums[i];
+	if(target==0){
+		xx.push_back(index);
+	}
+	fun(xx,nums,i+1,target,index);
+	index.pop_back();
+	target+=nums[i];
+	fun(xx,nums,i+1,target,index);
+}
+vector<vector<int>> NSum(vector<int>& nums) { 
+	vector<vector<int>> xx;
+	vector<int> index;
+
+	fun(xx,nums,0,8,index); //任意个数的和为任意值的解法，搜索 
+	return xx;
+}
+
+
+void twoSum(vector<int>& nums, int target,vector<vector<int>>& xx,int index) {
+    for(int i=index+1,j=nums.size()-1;i<j;){
+            if(nums[i]+nums[j]==target){
+                vector<int> x;
+				
+				x.push_back(nums[i]);
+				x.push_back(nums[j]);
+				x.push_back(-target);
+				sort(x.begin(),x.end());
+				xx.push_back(x);
+				i++;
+				j--;
+			   // while(i < nums.size() && nums[i]==nums[i - 1]) i++;    
+             //   while(j >= 0 && nums[j] == nums[j + 1]) j--; 
+            }else if(nums[i]+nums[j]>target){  
+                j--;  //和的值超了 需要降低该值
+            }else{
+                i++;
+            }
+        }
+    }
+
+
+vector<vector<int>> threeSum(vector<int>& nums) {
+    vector<vector<int>> xx;
+    if(nums.size()<3){
+        return xx;
+    }
+    sort(nums.begin(),nums.end());
+    for(int i=0;i<nums.size();i++){
+        if(i>0&&nums[i]==nums[i-1]){
+            continue;
+        }
+	    twoSum(nums,-nums[i],xx,i);
+    }
+	return xx;
+}
 
 int main(){
-	vector<int > v;
-	fun_4(v,10,10);
+	//-1 0 1 2 -1 -4
+	vector<int> x;
+	x.push_back(10);
+	x.push_back(1);
+	x.push_back(2);
+	x.push_back(7);
+	x.push_back(6);
+	x.push_back(1);
+	x.push_back(5);
+	NSum(x);
 	/*int N = 10;
 	string s = "657465413212327543200894353432120";
 	cout << s.size() << endl;
