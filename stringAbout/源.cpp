@@ -13,7 +13,7 @@
 	从两端同时开始遍历
 
 */
-#include <vector>
+
 #include <iostream>
 #include <string>
 using namespace std;
