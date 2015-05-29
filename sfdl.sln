@@ -21,6 +21,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "test_IP", "test_IP\test_IP.
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "stringAbout", "stringAbout\stringAbout.vcxproj", "{22AD6A77-DB22-4273-8FB3-61E11E5DD114}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "arrayAbout", "arrayAbout\arrayAbout.vcxproj", "{972CFE3E-F157-4A0E-B577-221A03966488}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Win32 = Debug|Win32
@@ -67,11 +69,12 @@ Global
 		{22AD6A77-DB22-4273-8FB3-61E11E5DD114}.Debug|Win32.Build.0 = Debug|Win32
 		{22AD6A77-DB22-4273-8FB3-61E11E5DD114}.Release|Win32.ActiveCfg = Release|Win32
 		{22AD6A77-DB22-4273-8FB3-61E11E5DD114}.Release|Win32.Build.0 = Release|Win32
+		{972CFE3E-F157-4A0E-B577-221A03966488}.Debug|Win32.ActiveCfg = Debug|Win32
+		{972CFE3E-F157-4A0E-B577-221A03966488}.Debug|Win32.Build.0 = Debug|Win32
+		{972CFE3E-F157-4A0E-B577-221A03966488}.Release|Win32.ActiveCfg = Release|Win32
+		{972CFE3E-F157-4A0E-B577-221A03966488}.Release|Win32.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
-	EndGlobalSection
-	GlobalSection(Performance) = preSolution
-		HasPerformanceSessions = true
 	EndGlobalSection
 EndGlobal
